@@ -1,0 +1,132 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+
+body {
+    margin: 0;
+    font-family: "Poppins", sans-serif;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+figcaption {
+    line-height: 18px;
+    font-size: larger;
+}
+
+ul {
+    padding-left: 0;
+}
+
+li {
+    list-style: none;
+    transition: opacity 300ms;
+}
+
+li:hover {
+    opacity: 0.6;
+}
+
+.social {
+    font-weight: bold;
+}
+
+.container {
+    height: 100dvh;
+    display: flex;
+    flex-direction: column;
+}
+
+.main {
+    flex-grow: 1;
+}
+
+.header {
+    user-select: none;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px;
+}
+
+.logo_img {
+    width: 200px;
+    object-fit: fill;
+}
+
+.navbar {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+    gap: 45px;
+}
+
+.navbar_item {
+    font-weight: 100;
+    font-size: 24px;
+    text-align: center;
+}
+
+.navbar_item {
+    display: inline-block;
+}
+
+.navbar_item::after {
+    content: "";
+    width: 0px;
+    height: 2px;
+    display: block;
+    background: #6a8eae;
+    transition: 300ms;
+}
+
+.navbar_item:hover::after {
+    width: 100%;
+}
+
+.navbar_item-booking {
+    font-size: 24px;
+    text-decoration: none !important;
+    margin-left: 45px;
+    font-weight: bold;
+    color: #003580;
+    padding: 10px;
+    border-radius: 15px;
+    transition: background 0.7s, color 0.7s;
+}
+
+.navbar_item-booking:hover {
+    color: white !important;
+    background-color: #003580;
+}
+
+.menu {
+    display: none;
+}
+
+.footer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.footer_links {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    padding-bottom: 30px;
+}
+
+.creator {
+    padding-bottom: 30px;
+}
+
+/* @media screen and (max-width: 1250px) {
+    .navbar {
+        display: none;
+    }
+} */
+/* ! zrób w js zmiane loga Booking.com na krótkie B. */
