@@ -1,20 +1,50 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pl-PL">
     <head>
         <meta charset="UTF-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Sample site</title>
-        <style>
-            body {
-                font-family: sans-serif;
-                display: flex;
-                flex-direction: column;
-                justify-content: center;
-            }
-        </style>
+        <!-- dokończ opis content="..." -->
+        <meta name="description" content="" />
+        <title>Zalasek - Nocelgi i Mini ZOO</title>
+        <link rel="stylesheet" href="./style.css" />
     </head>
     <body>
-        <h1>Welcome!</h1>
+        <div class="container">
+            <div class="header">
+                <div class="logo">
+                    <a href="https://zalasek.pages.dev/">
+                        <img
+                            src="./img/logo_zalasek.jpg"
+                            alt="Zalasek"
+                            width="120px"
+                        />
+                    </a>
+                </div>
+                <div class="navbar">
+                    <a href="#" class="navbar_item">Oferta</a>
+                    <a href="#" class="navbar_item">Galeria</a>
+                    <a href="#" class="navbar_item">Kontakt</a>
+                </div>
+                <div class="menu hidden"></div>
+            </div>
+            <div class="main">
+                <section class="main_item" id="info">info</section>
+                <section class="main_item" id="gallery">galeria</section>
+                <section class="main_item" id="whereToFind">
+                    <!-- <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d2579.3468011039176!2d20.2305345!3d49.7230979!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x471605dd8c16b7e7%3A0x7d3d2be0f40472ef!2sNOCLEGI%20i%20MINIZOO%20Gospodarstwo%20Agroturystyczne%20Zalasek!5e0!3m2!1spl!2spl!4v1678374929572!5m2!1spl!2spl"
+                        width="100%"
+                        height="300"
+                        style="border: 0"
+                        allowfullscreen=""
+                        loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade"
+                    ></iframe> -->
+                </section>
+            </div>
+            <div class="footer">Mikołaj Osiak</div>
+        </div>
+        <script src="./app.js"></script>
     </body>
 </html>
