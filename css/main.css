@@ -19,12 +19,12 @@ ul {
     padding-left: 0;
 }
 
-li {
+.footer li {
     list-style: none;
     transition: opacity 300ms;
 }
 
-li:hover {
+.footer li:hover {
     opacity: 0.6;
 }
 
@@ -79,7 +79,7 @@ li:hover {
     width: 0px;
     height: 2px;
     display: block;
-    background: #6a8eae;
+    background: #157145;
     transition: 300ms;
 }
 
@@ -103,8 +103,60 @@ li:hover {
     background-color: #003580;
 }
 
-.menu {
+.menu-btn {
+    height: 48px;
     display: none;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background 300ms;
+}
+
+.menu-btn:hover {
+    background-color: rgba(87, 167, 115, 0.9);
+}
+
+#side-nav {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    right: 0;
+    background-color: rgba(87, 167, 115, 0.9);
+    overflow-x: hidden;
+    transition: 300ms;
+    padding-top: 60px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    font-size: 26px;
+}
+
+#side-nav .close-btn {
+    cursor: pointer;
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 54px;
+    margin-left: 50px;
+    transition: opacity 300ms;
+}
+
+.side-nav_item {
+    padding: 0 0 0 25px;
+    transition: opacity 300ms;
+}
+
+.side-nav_item:hover {
+    opacity: 0.6;
+}
+
+.hidden {
+    display: none;
+}
+
+.close-btn:hover {
+    opacity: 0.6;
 }
 
 .footer {
@@ -121,12 +173,23 @@ li:hover {
 }
 
 .creator {
+    font-size: 12px;
     padding-bottom: 30px;
 }
 
-/* @media screen and (max-width: 1250px) {
+@media screen and (max-width: 950px) {
     .navbar {
         display: none;
     }
-} */
-/* ! zrób w js zmiane loga Booking.com na krótkie B. */
+
+    .menu-btn {
+        display: block;
+    }
+}
+
+@media screen and (max-width: 650px) {
+    .footer_links {
+        flex-direction: column;
+        text-align: center;
+    }
+}

@@ -36,11 +36,20 @@
                         target="_blank"
                         class="navbar_item-booking"
                     >
-                        Booking<span style="color: #009fe3">.com</span>
+                        <span id="booking">Booking</span><span style="color: #009fe3" id="bDot">.com</span>
                     </a>
                 </div>
                 <!-- hamburger menu -->
-                <div class="menu hidden"></div>
+                <div class="menu-btn">
+                    <img src="./img/menu.svg" alt="menu" />
+                </div>
+                <div id="side-nav">
+                    <a class="close-btn">&times;</a><br />
+                    <a class="side-nav_item" href="./index.html">Strona główna</a>
+                    <a class="side-nav_item" href="./html/offer.html">Oferta</a>
+                    <a class="side-nav_item" href="./html/about.html">O nas</a>
+                    <a class="side-nav_item" href="./html/contact.html">Kontakt</a>
+                </div>
             </div>
             <div class="main">
                 <section class="main_item" id="about"></section>
@@ -105,5 +114,7 @@
                 </div>
             </div>
         </div>
+
+        <script src="./menu.js"></script>
     </body>
 </html>
