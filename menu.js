@@ -26,7 +26,7 @@ const sideNavItems = document.querySelectorAll(".side-nav_item");
 
 menuBtn.addEventListener("click", () => {
     sideNav.style.width = "250px";
-    menuBtn.style.display = "none";
+    menuBtn.style.opacity = "0";
     for (let e of sideNavItems) {
         e.style.display = "block";
     }
@@ -34,7 +34,7 @@ menuBtn.addEventListener("click", () => {
 
 closeBtn.addEventListener("click", () => {
     sideNav.style.width = "0";
-    menuBtn.style.display = "block";
+    menuBtn.style.opacity = "1";
     for (let e of sideNavItems) {
         e.style.display = "none";
     }
