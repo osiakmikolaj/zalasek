@@ -1,0 +1,40 @@
+#about {
+    margin: 20px 30px;
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    justify-content: space-around;
+}
+
+.about-element {
+    padding: 25px;
+    background-color: rgba(87, 167, 115, 0.2);
+    border-radius: 15px;
+}
+
+.about-text {
+    display: flex;
+    flex-direction: column;
+    flex: 2;
+}
+
+.about-features {
+    flex-grow: 1;
+}
+
+.about-text > h1,
+.about-features h2 {
+    margin: 0;
+    font-weight: 400;
+}
+
+@media screen and (max-width: 1200px) {
+    #about {
+        flex-direction: column;
+    }
+
+    .about-text,
+    .about-features {
+        margin: auto;
+    }
+}

@@ -4,21 +4,40 @@
         <meta charset="UTF-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <!-- dokończ opis content="..." -->
-        <meta name="description" content="" />
+        <meta
+            name="description"
+            content="Zalasek Gospodarstwo Agroturystyczne z Alpakami położony jest w miejscowości Dobra i oferuje widok na basen."
+        />
         <link rel="icon" type="image/x-icon" href="./img/favicon.ico" />
         <title>Zalasek - Nocelgi i Mini ZOO</title>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
         <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&display=swap" rel="stylesheet" />
         <link rel="stylesheet" href="./css/main.css" />
+        <link rel="stylesheet" href="./css/imgslider.css" />
+        <link rel="stylesheet" href="./css/index.css" />
+        <!-- Cloudflare Web Analytics -->
+        <script
+            defer
+            src="https://static.cloudflareinsights.com/beacon.min.js"
+            data-cf-beacon='{"token": "be8ba45a77ae462f86bd378a57ad3f74"}'
+        ></script>
+        <!-- End Cloudflare Web Analytics -->
     </head>
     <body>
         <div class="container">
-            <div class="header">
+            <div id="fb-root"></div>
+            <script
+                async
+                defer
+                crossorigin="anonymous"
+                src="https://connect.facebook.net/pl_PL/sdk.js#xfbml=1&version=v16.0"
+                nonce="IudoRhYu"
+            ></script>
+            <div class="header" id="header">
                 <div class="logo">
                     <a href="https://zalasek.pages.dev/">
-                        <img class="logo_img" src="./img/zalasek.webp" width="200px" height="115px" alt="Zalasek" />
+                        <img class="logo_img" src="./img/zalasek.webp" alt="Zalasek" />
                     </a>
                 </div>
                 <div class="navbar">
@@ -34,7 +53,6 @@
                         <span id="booking">Booking</span><span style="color: #009fe3" id="bDot">.com</span>
                     </a>
                 </div>
-                <!-- hamburger menu -->
                 <div class="menu-btn">
                     <img src="./img/menu.svg" width="48px" height="48px" alt="menu" />
                 </div>
@@ -47,18 +65,73 @@
                 </div>
             </div>
             <div class="main">
-                <section class="main_item" id="about"></section>
-                <section class="main_item" id="gallery"></section>
+                <section aria-label="Najnowsze Zdjęcia" class="main_item" id="gallery">
+                    <div class="carousel" data-carousel>
+                        <button class="carousel-btn next" data-carousel-btn="next">&gt;</button>
+                        <button class="carousel-btn prev" data-carousel-btn="prev">&lt;</button>
+                        <ul data-slides>
+                            <li class="slide" data-active>
+                                <img
+                                    src="https://cf.bstatic.com/xdata/images/hotel/max1024x768/326174574.jpg?k=8db29f53d47bf506c79f77fcf0c7623fca396544144730dfe06207e692c94b2d&o=&hp=1"
+                                    alt="Dom"
+                                />
+                            </li>
+                            <li class="slide">
+                                <img
+                                    src="https://cf.bstatic.com/xdata/images/hotel/max1024x768/420706588.jpg?k=ec8572068c6146d06ce1bc440d1cde34c9b0436d758b350fe5a06a5057838dd2&o=&hp=1"
+                                    alt="Korwa"
+                                />
+                            </li>
+                            <li class="slide">
+                                <img
+                                    src="https://cf.bstatic.com/xdata/images/hotel/max1024x768/420706442.jpg?k=3398e1271b39b3583da48206c196b9fb26fb4d54801e98e64d590fff2c4a481c&o=&hp=1"
+                                    alt="Alpaki"
+                                />
+                            </li>
+                        </ul>
+                    </div>
+                </section>
+                <section class="main_item" id="about">
+                    <div class="about-element about-features">
+                        <div
+                            class="fb-page"
+                            data-href="https://www.facebook.com/zalasek"
+                            data-tabs="timeline"
+                            data-width=""
+                            data-height="100%"
+                            data-small-header="false"
+                            data-adapt-container-width="true"
+                            data-hide-cover="false"
+                            data-show-facepile="true"
+                        >
+                            <blockquote cite="https://www.facebook.com/zalasek" class="fb-xfbml-parse-ignore">
+                                <a href="https://www.facebook.com/zalasek">Zalasek noclegi i mini zoo</a>
+                            </blockquote>
+                        </div>
+                    </div>
+                    <div class="about-element about-text">
+                        <h1>
+                            <b>Zalasek</b> to magiczne miejsce, gdzie znajdziesz spokój i czas na wypoczynek dla całej
+                            rodziny w malowniczym sercu Beskidu Wyspowego!
+                        </h1>
+                        <p>
+                            Dzielimy sie z Państwem otwartym sercem schowanym w świerkowym zagajniku, chwilami spokoju
+                            przed obliczem łopienia, energią żniw i owocobrania z nostalgia wspomnień i nadzieją na
+                            kolejne spotkania! Pozwól się zauroczyć!
+                        </p>
+                    </div>
+                </section>
                 <section class="main_item" id="whereToFind">
-                    <!-- <iframe
-                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2579.3472644034573!2d20.231347715650976!3d49.723089179381674!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x471605dd8c16b7e7%3A0x7d3d2be0f40472ef!2sNOCLEGI%20i%20MINIZOO%20Gospodarstwo%20Agroturystyczne%20Zalasek!5e0!3m2!1spl!2spl!4v1678388975974!5m2!1spl!2spl&zoom=21"
+                    <iframe
+                        title="Mapy google"
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d455.96802338667226!2d20.23335738813178!3d49.72313837619993!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x471605dd8c16b7e7%3A0x7d3d2be0f40472ef!2sNOCLEGI%20i%20MINIZOO%20Gospodarstwo%20Agroturystyczne%20Zalasek!5e0!3m2!1spl!2spl!4v1678564119920!5m2!1spl!2spl"
                         width="100%"
-                        height="450"
+                        height="600px"
                         style="border: 0"
                         allowfullscreen=""
                         loading="lazy"
                         referrerpolicy="no-referrer-when-downgrade"
-                    ></iframe> -->
+                    ></iframe>
                 </section>
             </div>
             <div class="footer">
@@ -105,12 +178,14 @@
                     </div>
                 </div>
                 <div class="creator">
-                    <a href="#">Realizacja <span style="color: #157145; font-weight: bold">Mikołaj Osiak</span></a>
+                    <a href="#">Realizacja <span style="color: #57a773; font-weight: bold">Mikołaj Osiak</span></a>
                 </div>
             </div>
         </div>
 
         <script src="./js/sidebar.js"></script>
         <script src="./js/menu.js"></script>
+        <script src="./js/imgslider.js"></script>
+        <script src="./js/header.js"></script>
     </body>
 </html>

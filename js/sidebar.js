@@ -1,5 +1,6 @@
 const sideNav = document.querySelector("#side-nav");
 const sideNavItems = document.querySelectorAll(".side-nav_item");
+const imgSlideBtn = document.querySelector(".next");
 
 function openNav() {
     sideNav.style.width = "250px";
@@ -7,6 +8,7 @@ function openNav() {
     for (let e of sideNavItems) {
         e.style.display = "block";
     }
+    imgSlideBtn.style.opacity = "0";
 }
 
 function closeNav() {
@@ -15,4 +17,5 @@ function closeNav() {
     for (let e of sideNavItems) {
         e.style.display = "none";
     }
+    imgSlideBtn.style.opacity = "1";
 }
