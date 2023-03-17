@@ -1,6 +1,6 @@
 .info {
     display: grid;
-    grid-template-columns: 2fr 1fr;
+    grid-template-columns: 1fr 2fr;
 }
 
 .info_item {
@@ -9,8 +9,28 @@
     margin: 10px;
 }
 
+h2 {
+    margin-top: 0;
+}
+
+h3 {
+    margin-bottom: 10px;
+}
+
+.kontakt {
+    text-align: right;
+    list-style-type: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
 @media screen and (max-width: 1000px) {
     .info {
         grid-template-columns: 1fr;
+    }
+
+    .kontakt {
+        text-align: center;
     }
 }
