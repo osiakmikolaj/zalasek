@@ -1,0 +1,34 @@
+.main_item {
+    margin: 150px 15px 15px 25px;
+    display: flex;
+    flex-direction: column;
+}
+
+.main_item-1,
+.main_item-2 {
+    padding: 15px;
+}
+
+.main_item-2 {
+    margin: auto;
+}
+
+.booking-text {
+    font-size: 24px;
+    padding: 10px;
+}
+
+.main_item_booking {
+    font-size: 32px;
+    text-decoration: none !important;
+    font-weight: bold;
+    color: #003580;
+    padding: 10px;
+    border-radius: 15px;
+    transition: background 0.7s, color 0.7s;
+}
+
+.main_item_booking:hover {
+    color: white !important;
+    background-color: #003580;
+}

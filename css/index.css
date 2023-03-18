@@ -15,7 +15,7 @@
 }
 
 .info-row-2 {
-    grid-template-columns: 1fr 5fr;
+    grid-template-columns: 1fr 4fr;
 }
 
 .info-row-3 {
@@ -25,6 +25,7 @@
 .info-row_item {
     padding: 15px;
     border-radius: 15px;
+    background-color: rgba(87, 167, 115, 0.1);
 }
 
 .btn-blocks {
@@ -33,6 +34,7 @@
     flex-wrap: wrap;
     align-items: center;
     justify-content: center;
+    background-color: rgba(87, 167, 115, 0);
 }
 
 .btn-block {
@@ -56,6 +58,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    background-color: rgba(87, 167, 115, 0);
 }
 
 .fb a {
@@ -63,6 +66,25 @@
 }
 .fb a:hover {
     opacity: 0.6;
+}
+
+.index_about {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 25px;
+}
+
+.index_about-item1 {
+    font-size: larger;
+    padding: 15px;
+}
+
+.index_about-item2 {
+    padding: 15px;
+}
+
+.index_about-item2 p {
+    margin-top: 0;
 }
 
 h2 {
@@ -73,6 +95,10 @@ h3 {
     margin-bottom: 10px;
 }
 
+.kont {
+    background-color: rgba(87, 167, 115, 0);
+}
+
 .kontakt {
     list-style-type: none;
     display: flex;
@@ -80,12 +106,19 @@ h3 {
     justify-content: center;
 }
 
-@media screen and (max-width: 700px) {
-    .info-row {
+@media screen and (max-width: 1150px) {
+    .index_about {
         grid-template-columns: 1fr;
+        gap: 0;
+    }
+}
+
+@media screen and (max-width: 850px) {
+    .index_about-item1 {
+        font-size: 16px;
     }
 
-    .fb_page {
-        right: -14px !important;
+    .info-row {
+        grid-template-columns: 1fr;
     }
 }

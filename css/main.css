@@ -14,6 +14,7 @@ body {
     margin: 0;
     font-family: "Poppins", sans-serif;
     scroll-behavior: smooth;
+    background-color: rgba(87, 167, 115, 0.05);
 }
 
 a {
@@ -120,17 +121,55 @@ p {
     background-color: rgba(87, 167, 115, 0.3);
 }
 
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 0.5;
+    }
+}
+
+@keyframes fadeOut {
+    from {
+        opacity: 0.5;
+    }
+    to {
+        opacity: 0;
+    }
+}
+
+.fadein {
+    animation: 300ms fadeIn;
+}
+
+.fadeout {
+    animation: 300ms fadeOut;
+}
+
+.side-nav_overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 200dvh;
+    height: 200dvh;
+    background: #000;
+    opacity: 0.5;
+    z-index: 5;
+    display: none;
+}
+
 .side-nav {
     height: 100%;
     width: 0;
     position: fixed;
-    z-index: 1;
+    z-index: 10;
     top: 0;
     right: 0;
     background-color: rgba(255, 255, 255, 1);
     overflow-x: hidden;
     transition: 300ms;
-    padding-top: 60px;
+    padding-top: 120px;
     display: flex;
     flex-direction: column;
     gap: 10px;
@@ -183,6 +222,7 @@ p {
 /* footer */
 
 .footer {
+    padding-top: 25px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -216,6 +256,11 @@ ul {
 
 .social {
     font-weight: bold;
+}
+
+.madeby {
+    font-size: 14px;
+    padding: 10px;
 }
 
 /* footer */
