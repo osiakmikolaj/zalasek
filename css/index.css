@@ -39,11 +39,17 @@
     padding: 15px;
     height: fit-content;
     border-radius: 15px;
-    font-size: 28px;
+    font-size: 24px;
     font-weight: 700;
     user-select: none;
     border: 1px solid lightgray;
     background-color: white;
+    display: flex;
+    flex-direction: row;
+    gap: 3px;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: center;
 }
 
 .fb {
