@@ -46,7 +46,7 @@
     background-color: white;
     display: flex;
     flex-direction: row;
-    gap: 3px;
+    gap: 5px;
     flex-wrap: nowrap;
     align-items: center;
     justify-content: center;
