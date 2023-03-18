@@ -11,7 +11,7 @@
 }
 
 .info-row-1 {
-    grid-template-columns: 3fr 2fr;
+    grid-template-columns: 2fr 3fr;
 }
 
 .info-row-2 {
@@ -25,7 +25,25 @@
 .info-row_item {
     padding: 15px;
     border-radius: 15px;
-    background-color: rgba(87, 167, 115, 0.1);
+}
+
+.btn-blocks {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn-block {
+    padding: 15px;
+    height: fit-content;
+    border-radius: 15px;
+    font-size: 28px;
+    font-weight: 700;
+    user-select: none;
+    border: 1px solid lightgray;
+    background-color: white;
 }
 
 .fb {
