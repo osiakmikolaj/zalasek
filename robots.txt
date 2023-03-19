@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+Disallow: /js/
+
+User-agent: BingBot
+Allow: /
+Disallow: /js/
+
+Sitemap: https://zalaesk.pl/sitemap.xml
