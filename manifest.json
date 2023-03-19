@@ -1,0 +1,17 @@
+{
+    "name": "Zalasek Noclegi i Mini ZOO",
+    "short_name": "Zalasek",
+    "start_url": "/index.html",
+    "id": "/index.html",
+    "display": "standalone",
+    "background_color": "#57A773",
+    "theme_color": "#57A773",
+    "orientation": "landscape-primary",
+    "icons": [
+        {
+            "src": "/img/favicon.png",
+            "type": "image/png",
+            "sizes": "192x192"
+        }
+    ]
+}
