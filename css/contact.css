@@ -4,16 +4,21 @@ ul {
 
 .main_item {
     margin: 150px 15px 15px 25px;
+    display: flex;
+    flex-direction: column;
+}
+
+.main-item-block {
     display: grid;
     grid-template-columns: 4fr 1fr;
 }
 
-.main_item-block {
+.main_item-block_element {
     padding: 15px;
 }
 
 @media screen and (max-width: 850px) {
-    .main_item {
+    .main-item-block {
         grid-template-columns: 1fr;
     }
 }
