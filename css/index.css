@@ -112,6 +112,10 @@ h3 {
 }
 
 @media screen and (max-width: 900px) {
+    .index_about-item1 {
+        font-size: 16px;
+    }
+
     .info-row {
         grid-template-columns: 1fr;
     }
