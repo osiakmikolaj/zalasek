@@ -74,18 +74,13 @@
     gap: 15px;
 }
 
-.index_about-item1 {
-    font-size: larger;
-    padding: 15px 15px 0 15px;
-}
-
 .index_about-item1 > h2 {
-    margin: 0;
+    margin: 20px 0 20px 0;
+    font-size: 36px;
 }
 
 .index_about-item2 {
-    padding: 0 15px 15px 15px;
-    font-size: larger;
+    font-size: 24px;
 }
 
 .index_about-item2 p {
@@ -112,8 +107,8 @@ h3 {
 }
 
 @media screen and (max-width: 900px) {
-    .index_about-item1 {
-        font-size: 16px !important;
+    .index_about-item1 > h2 {
+        font-size: 24px;
     }
 
     .info-row {
