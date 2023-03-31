@@ -9,12 +9,12 @@
     "orientation": "landscape-primary",
     "icons": [
         {
-            "src": "/img/favicon.png",
+            "src": "/img/icons/favicon.png",
             "type": "image/png",
             "sizes": "192x192"
         },
         {
-            "src": "/img/icon-512x512.png",
+            "src": "/img/icons/icon-512x512.png",
             "type": "image/png",
             "sizes": "512x512"
         }
