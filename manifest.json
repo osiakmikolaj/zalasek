@@ -1,22 +1,22 @@
 {
-  "name": "Zalasek Noclegi i Mini ZOO",
-  "short_name": "Zalasek",
-  "start_url": "/index.html",
-  "id": "/index.html",
-  "display": "standalone",
-  "background_color": "#57A773",
-  "theme_color": "#57A773",
-  "orientation": "portrait",
-  "icons": [
-    {
-      "src": "/img/icons/favicon.png",
-      "type": "image/png",
-      "sizes": "192x192"
-    },
-    {
-      "src": "/img/icons/icon-512x512.png",
-      "type": "image/png",
-      "sizes": "512x512"
-    }
-  ]
+    "name": "Zalasek Noclegi i Mini ZOO",
+    "short_name": "Zalasek",
+    "start_url": "/index.html",
+    "id": "/index.html",
+    "display": "standalone",
+    "background_color": "#57A773",
+    "theme_color": "#57A773",
+    "orientation": "landscape-primary",
+    "icons": [
+        {
+            "src": "/img/icons/favicon.png",
+            "type": "image/png",
+            "sizes": "192x192"
+        },
+        {
+            "src": "/img/icons/icon-512x512.png",
+            "type": "image/png",
+            "sizes": "512x512"
+        }
+    ]
 }
