@@ -10,7 +10,7 @@ ul {
 
 .main-item-block {
     display: grid;
-    grid-template-columns: 4fr 1fr;
+    grid-template-columns: 1fr 4fr 1fr;
 }
 
 .main_item-block_element {
