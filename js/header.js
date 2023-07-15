@@ -15,7 +15,6 @@ window.onscroll = () => {
 };
 
 let currentPath = window.location.pathname;
-console.log(currentPath);
 
 if (currentPath == "/") {
     index.style.textDecoration = "rgba(87, 167, 115, 1) underline";
