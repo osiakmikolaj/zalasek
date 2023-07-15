@@ -17,10 +17,10 @@ window.onscroll = () => {
 let currentPath = window.location.pathname;
 console.log(currentPath);
 
-if (currentPath == "/index.html") {
+if (currentPath == "/") {
     index.style.textDecoration = "rgba(87, 167, 115, 1) underline";
-} else if (currentPath == "/pages/offer.html") {
+} else if (currentPath == "/pages/offer") {
     offer.style.textDecoration = "rgba(87, 167, 115, 1) underline";
-} else if (currentPath == "/pages/contact.html") {
+} else if (currentPath == "/pages/contact") {
     contact.style.textDecoration = "rgba(87, 167, 115, 1) underline";
 }
