@@ -93,6 +93,23 @@
     padding: 0 15px 0 15px;
 }
 
+/* Przycisk oferty */
+.goToOffer {
+    font-size: 28px;
+    font-weight: 600;
+    cursor: pointer;
+    border: none;
+    border-radius: 15px;
+    padding: 15px 30px 15px 30px;
+    margin-bottom: 10px;
+    transition: 300ms ease-in-out;
+    background-color: rgba(255, 255, 255, 0.4);
+}
+
+.goToOffer:hover {
+    background-color: rgba(255, 255, 255, 1);
+}
+
 /* media */
 
 @media screen and (max-width: 1700px) {

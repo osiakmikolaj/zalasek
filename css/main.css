@@ -81,17 +81,8 @@ p {
     text-align: center;
 }
 
-.navbar_item::after {
-    content: "";
-    width: 0px;
-    height: 2px;
-    display: block;
-    background: #9bd1e5;
-    transition: 250ms;
-}
-
-.navbar_item:hover::after {
-    width: 100%;
+.navbar_item:hover {
+    text-decoration: underline;
 }
 
 .navbar_item-booking {
