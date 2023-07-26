@@ -103,11 +103,13 @@
     padding: 15px 30px 15px 30px;
     margin-bottom: 10px;
     transition: 300ms ease-in-out;
-    background-color: rgba(255, 255, 255, 0.4);
+    background-color: #1571452c;
+    color: #507da5;
 }
 
 .goToOffer:hover {
-    background-color: rgba(255, 255, 255, 1);
+    background-color: #15714591;
+    color: #d1faff;
 }
 
 /* media */
