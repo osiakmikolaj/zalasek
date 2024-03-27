@@ -259,15 +259,6 @@ ul {
     padding: 10px;
 }
 
-.madeby-name {
-    transition: font 400ms;
-}
-
-.madeby-name:hover {
-    font-size: larger;
-    text-decoration: #57a773 wavy underline;
-}
-
 /* footer */
 
 /* facebook */
