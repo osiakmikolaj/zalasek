@@ -1,302 +1,73 @@
-@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap");
-
-.material-symbols-outlined {
-    font-variation-settings: "FILL" 1, "wght" 400, "GRAD" 0, "opsz" 48;
-}
-
-*,
-*::before,
-*::after {
-    box-sizing: border-box;
-}
+/* font */
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap");
 
 body {
-    font-family: "Roboto", sans-serif;
-    margin: 0;
-    scroll-behavior: smooth;
-    background-color: rgba(87, 167, 115, 0.05);
-    background-color: rgba(106, 142, 174, 1);
-    background-image: linear-gradient(90deg, rgba(106, 142, 174, 1) 0%, rgba(87, 167, 115, 1) 100%);
+    font-family: "Open Sans", sans-serif;
 }
 
-a {
-    text-decoration: none;
-    color: black;
+/* Carousel Wide and Mobile*/
+#carouselMobile {
+    display: none !important;
 }
 
-/* main container */
-
-.container {
-    height: 100dvh;
-    display: flex;
-    flex-direction: column;
-}
-
-.main {
-    flex-grow: 1;
-    background-color: rgba(255, 255, 255, 0.6);
-}
-
-p {
-    font-size: 20px;
-}
-
-/* main container */
-
-/* header */
-
-.header {
-    height: 100px;
-    user-select: none;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    position: fixed;
-    z-index: 1;
-    top: 0;
-    right: 0;
-    left: 0;
-    padding: 0 20px;
-    background-color: rgba(255, 255, 255, 0.9);
-    transition: 300ms ease;
-}
-
-.navbar {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    align-items: center;
-    gap: 45px;
-}
-
-.logo_img {
-    width: 135px;
-    height: 75px !important;
-}
-
-.navbar_item {
-    font-size: 24px;
-    font-weight: 500;
-    text-align: center;
-}
-
-.navbar_item:hover {
-    text-decoration: underline;
-}
-
-.navbar_item-booking {
-    font-size: 24px;
-    text-decoration: none !important;
-    margin-left: 45px;
-    font-weight: bold;
-    color: #003580;
-    padding: 10px;
-    border-radius: 15px;
-    transition: background 0.7s, color 0.7s;
-}
-
-.navbar_item-booking:hover {
-    color: white !important;
-    background-color: #003580;
-}
-
-/* header */
-
-/* sideMenu */
-
-.menu-btn {
-    height: 48px;
-    display: none;
-    cursor: pointer;
-    border-radius: 5px;
-    transition: background 300ms;
-}
-
-.menu-btn:hover {
-    background-color: rgba(87, 167, 115, 0.3);
-}
-
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-    }
-    to {
-        opacity: 0.5;
-    }
-}
-
-@keyframes fadeOut {
-    from {
-        opacity: 0.5;
-    }
-    to {
-        opacity: 0;
-    }
-}
-
-.fadein {
-    animation: 300ms fadeIn;
-}
-
-.fadeout {
-    animation: 300ms fadeOut;
-}
-
-.side-nav_overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 200dvh;
-    height: 200dvh;
-    background: #000;
-    opacity: 0.5;
-    z-index: 5;
-    display: none;
-}
-
-.side-nav {
-    height: 100%;
-    width: 0;
-    position: fixed;
-    z-index: 10;
-    top: 0;
-    right: 0;
-    background-color: rgba(255, 255, 255, 1);
-    overflow-x: hidden;
-    transition: 300ms;
-    padding-top: 120px;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    font-size: 26px;
-}
-
-.close-btn {
-    cursor: pointer;
-    position: absolute;
-    top: 25px;
-    right: 25px;
-    margin-left: 50px;
-    transition: opacity 300ms;
-}
-
-.side-nav_item {
-    padding: 0 0 0 25px;
-    transition: opacity 300ms;
-    white-space: nowrap;
-}
-
-.side-nav_item:hover {
-    opacity: 0.6;
-    text-decoration: rgba(87, 167, 115, 1) underline;
-}
-
-.close-btn:hover {
-    opacity: 0.6;
-}
-
-.side-nav_booking {
-    color: #003580;
-    font-weight: bold;
-    border-radius: 15px;
-    padding: 10px;
-    margin-left: 15px;
-    width: fit-content;
-    transition: background 0.7s, color 0.7s;
-}
-
-.side-nav_booking:hover {
-    background-color: #003580;
-    color: white;
-    text-decoration: none;
-    opacity: 1;
-}
-
-/* sideMenu */
-
-/* footer */
-
-.footer {
-    padding-top: 25px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background-color: rgba(255, 255, 255, 0.9);
-}
-
-.footer_links {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    padding-bottom: 30px;
-}
-
-figcaption {
-    line-height: 18px;
-    font-size: 22px;
-}
-
-ul {
-    padding-left: 0;
-}
-
-.footer li {
-    list-style: none;
-    transition: opacity 300ms;
-}
-
-.footer li:hover {
-    opacity: 0.6;
-}
-
-.social {
-    font-weight: bold;
-}
-
-.madeby {
-    font-size: 14px;
-    padding: 10px;
-}
-
-/* footer */
-
-/* facebook */
-.facebook-link {
-    transition: all 0.5s ease-in-out;
-    text-decoration: none;
-}
-
-.facebook-link:hover {
-    text-decoration: underline;
-}
-/* facebook */
-
-@media screen and (max-width: 1100px) {
-    .navbar {
-        display: none;
-    }
-
-    .menu-btn {
-        display: block;
-    }
-}
-
-@media screen and (max-width: 900px) {
-    .main {
-        background-color: rgba(255, 255, 255, 0.8);
-    }
+#carosuelAccommodationMobile {
+    display: none !important;
 }
 
 @media screen and (max-width: 700px) {
-    .footer_links {
-        flex-direction: column;
-        text-align: center;
+    #carouselWide {
+        display: none !important;
+    }
+
+    #carouselMobile {
+        display: block !important;
+    }
+
+    #carouselAccommodation {
+        display: none !important;
+    }
+
+    #carosuelAccommodationMobile {
+        display: block !important;
     }
 }
 
-/* @media screen and (max-width: 367px) {
-    .body {
-        width: 100%;
+/* Icons */
+#icons {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-evenly;
+    gap: 10px;
+}
+
+.icon-item {
+    color: black;
+    background-color: #dde5b67c;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 5px;
+    border: 1px solid black;
+    text-align: center;
+}
+
+/* facebook */
+#fbContainer {
+    width: 500px;
+}
+
+@media screen and (max-width: 1000px) {
+    #fbContainer {
+        width: 330px !important;
+        margin-bottom: 25px;
     }
-} */
+}
+
+/* google maps contact */
+@media screen and (max-width: 1000px) {
+    #googleMaps {
+        margin-bottom: 25px;
+    }
+}
