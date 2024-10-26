@@ -35,6 +35,10 @@ body {
     #carosuelAccommodationMobile {
         display: block !important;
     }
+
+    #pa {
+        display: none !important;
+    }
 }
 
 /* Icons */
