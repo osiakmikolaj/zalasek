@@ -1,23 +1,25 @@
 {
-    "name": "Zalasek Noclegi i Mini ZOO",
+    "name": "Zalasek – Gospodarstwo Agroturystyczne z Alpakami",
     "short_name": "Zalasek",
-    "start_url": "/index.html",
-    "id": "/index.html",
+    "description": "Noclegi i Mini ZOO z alpakami w Dobrej, Beskid Wyspowy",
+    "lang": "pl",
+    "start_url": "/",
+    "id": "/",
     "display": "standalone",
     "background_color": "#ffffff",
     "theme_color": "#ffffff",
-    "orientation": "landscape-primary",
     "icons": [
         {
             "src": "/img/icons/favicon.png",
             "type": "image/png",
             "sizes": "192x192",
-            "purpose": "any maskable"
+            "purpose": "any"
         },
         {
             "src": "/img/icons/icon-512x512.png",
             "type": "image/png",
-            "sizes": "512x512"
+            "sizes": "512x512",
+            "purpose": "any"
         }
     ]
 }

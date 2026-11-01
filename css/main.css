@@ -1,54 +1,73 @@
-/* font */
-@import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap");
-
+/* Font (Open Sans wczytywany w <head> przez <link>) */
 body {
     font-family: "Open Sans", sans-serif;
 }
 
-/* Carousel Wide and Mobile*/
-#carouselMobile {
-    display: none !important;
+/* Odstęp pod przyklejonym menu */
+#carouselHero {
+    margin-top: 86px;
 }
 
-#carosuelAccommodationMobile {
-    display: none !important;
+.page-top {
+    padding-top: 100px;
 }
 
-/* navbar toggler */
+/* Navbar */
 .navbar-toggler {
     border: none;
 }
 
 @media screen and (max-width: 700px) {
-    #carouselWide {
-        display: none !important;
-    }
-
-    #carouselMobile {
-        display: block !important;
-    }
-
-    #carouselAccommodation {
-        display: none !important;
-    }
-
-    #carosuelAccommodationMobile {
-        display: block !important;
-    }
-
     #pa {
         display: none !important;
     }
 }
 
-/* Icons */
+/* Główny przycisk (rezerwacja) */
+.btn-zalasek {
+    --bs-btn-color: #fff;
+    --bs-btn-bg: #3d6b2f;
+    --bs-btn-border-color: #3d6b2f;
+    --bs-btn-hover-color: #fff;
+    --bs-btn-hover-bg: #2f5524;
+    --bs-btn-hover-border-color: #2f5524;
+    --bs-btn-focus-shadow-rgb: 61, 107, 47;
+    --bs-btn-active-color: #fff;
+    --bs-btn-active-bg: #264619;
+    --bs-btn-active-border-color: #264619;
+}
+
+/* Ocena z Booking.com */
+.rating-badge {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.rating-score {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 3rem;
+    height: 3rem;
+    padding: 0 0.5rem;
+    border-radius: 0.5rem 0.5rem 0.5rem 0;
+    background-color: #3d6b2f;
+    color: #fff;
+    font-size: 1.25rem;
+    font-weight: 700;
+}
+
+/* Ikony udogodnień */
 #icons {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     align-items: center;
+    align-content: flex-start;
     justify-content: space-evenly;
     gap: 10px;
+    margin: 0;
 }
 
 .icon-item {
@@ -57,14 +76,48 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 5px;
+    gap: 6px;
+    padding: 5px 8px;
     border: 1px solid black;
     text-align: center;
 }
 
-/* facebook */
+/* Karuzela zdjęć apartamentu */
+.carousel-offer {
+    width: 500px;
+    max-width: 100%;
+    flex-shrink: 0;
+}
+
+@media screen and (max-width: 700px) {
+    .carousel-offer {
+        width: 330px;
+    }
+}
+
+/* Wyposażenie apartamentu */
+.amenities ul {
+    padding-left: 1.2rem;
+}
+
+.amenities h3 {
+    border-bottom: 2px solid #cfe1b9;
+    padding-bottom: 0.25rem;
+}
+
+/* Odległości w okolicy */
+.distances li {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 0.4rem 0;
+    border-bottom: 1px solid #e5e5e5;
+}
+
+/* Facebook */
 #fbContainer {
     width: 500px;
+    max-width: 100%;
 }
 
 @media screen and (max-width: 1000px) {
@@ -74,9 +127,47 @@ body {
     }
 }
 
-/* google maps contact */
+/* Mapa i Facebook ładowane po kliknięciu */
+.embed-placeholder {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    width: 100%;
+    min-height: 500px;
+    padding: 1.5rem;
+    text-align: center;
+    background-color: #f2f7ec;
+    border: 1px solid #cfe1b9;
+}
+
+@media screen and (max-width: 1000px) {
+    .embed-placeholder {
+        min-height: 300px;
+    }
+}
+
+/* Kontakt */
+.contact-info {
+    max-width: 450px;
+    flex-shrink: 0;
+}
+
 @media screen and (max-width: 1000px) {
     #googleMaps {
         margin-bottom: 25px;
+    }
+}
+
+/* Partnerzy */
+.partners img {
+    width: 175px;
+    height: auto;
+}
+
+@media screen and (max-width: 500px) {
+    .partners img {
+        width: 140px;
     }
 }
