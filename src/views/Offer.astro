@@ -1,0 +1,154 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Icon from '../components/Icon.astro';
+import Photo from '../components/Photo.astro';
+import { pagePath, site, useTranslations, type Lang } from '../i18n/config';
+
+interface Props {
+    lang: Lang;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+const o = t.offer;
+
+const apartmentStrip = ['kitchen-wide', 'kitchen', 'dining', 'bedroom-1', 'bedroom-2', 'bedroom-3', 'crib', 'play-corner', 'games', 'stove', 'washer'];
+---
+
+<Layout lang={lang} page="offer">
+    <div class="wrap page-head">
+        <h1>{o.title}</h1>
+        <p class="lead">{o.lead}</p>
+    </div>
+
+    <section class="section" style="padding-top: var(--space-m)" aria-labelledby="apartment">
+        <div class="wrap">
+            <div class="split">
+                <div>
+                    <h2 id="apartment">{o.apartmentTitle}</h2>
+                    {o.apartmentText.map((p) => <p>{p}</p>)}
+                    <div class="actions">
+                        <a class="btn btn--hay" href={site.booking[lang]} target="_blank" rel="noopener">
+                            <Icon name="calendar" />
+                            {t.common.checkDates}
+                        </a>
+                    </div>
+                </div>
+                <div class="photo-single">
+                    <Photo slug="kitchen-dining" t={t} sizes="(max-width: 52rem) 100vw, 55vw" widths={[500, 800, 1200, 1600]} />
+                </div>
+            </div>
+            <ul class="strip">
+                {
+                    apartmentStrip.map((slug) => (
+                        <li>
+                            <Photo slug={slug} t={t} sizes="14rem" widths={[300, 500]} />
+                        </li>
+                    ))
+                }
+            </ul>
+        </div>
+    </section>
+
+    <section class="section section--tint" aria-labelledby="equipment">
+        <div class="wrap">
+            <h2 id="equipment" class="section__head">{o.equipmentTitle}</h2>
+            <div class="equipment">
+                {
+                    o.equipment.map((g) => (
+                        <div>
+                            <h3>{g.title}</h3>
+                            <ul>
+                                {g.items.map((i) => (
+                                    <li>{i}</li>
+                                ))}
+                            </ul>
+                        </div>
+                    ))
+                }
+            </div>
+        </div>
+    </section>
+
+    <section class="section" aria-labelledby="zoo">
+        <div class="wrap split split--reverse">
+            <div>
+                <h2 id="zoo">{o.zooTitle}</h2>
+                {o.zooText.map((p) => <p>{p}</p>)}
+                <a class="btn btn--line" href={pagePath(lang, 'gallery') + '#animals'}>{t.common.seeGallery}</a>
+            </div>
+            <div class="photo-trio">
+                <Photo slug="alpacas-sun" t={t} sizes="(max-width: 52rem) 60vw, 32vw" widths={[400, 700, 1000]} />
+                <Photo slug="highland-cattle" t={t} sizes="(max-width: 52rem) 40vw, 22vw" widths={[300, 500, 800]} />
+                <Photo slug="peacock" t={t} sizes="(max-width: 52rem) 40vw, 22vw" widths={[300, 500, 800]} />
+            </div>
+        </div>
+    </section>
+
+    <section class="section section--tint" aria-labelledby="farm">
+        <div class="wrap split">
+            <div>
+                <h2 id="farm">{o.farmTitle}</h2>
+                {o.farmText.map((p) => <p>{p}</p>)}
+            </div>
+            <div class="photo-single">
+                <Photo slug="house-flowers" t={t} sizes="(max-width: 52rem) 100vw, 55vw" widths={[500, 800, 1200]} />
+            </div>
+        </div>
+    </section>
+
+    <section class="section" aria-labelledby="cinema">
+        <div class="wrap split split--reverse">
+            <div>
+                <h2 id="cinema">{o.cinemaTitle}</h2>
+                <p>{o.cinemaText}</p>
+            </div>
+            <div class="photo-single photo-single--narrow">
+                <Photo slug="cinema" t={t} sizes="(max-width: 52rem) 100vw, 30rem" widths={[400, 500]} />
+            </div>
+        </div>
+    </section>
+
+    <section class="section section--tint" aria-labelledby="area">
+        <div class="wrap split">
+            <div>
+                <h2 id="area">{o.areaTitle}</h2>
+                <p>{o.areaText}</p>
+                <ul class="distances">
+                    {
+                        o.distances.map(([place, km]) => (
+                            <li>
+                                <span>{place}</span>
+                                <span>
+                                    {t.common.approx} {km}
+                                </span>
+                            </li>
+                        ))
+                    }
+                </ul>
+            </div>
+            <div class="photo-single">
+                <Photo slug="alpacas-mist" t={t} sizes="(max-width: 52rem) 100vw, 55vw" widths={[500, 800, 1200, 1600]} />
+            </div>
+        </div>
+    </section>
+
+    <section class="section section--dark" aria-labelledby="ask">
+        <div class="wrap final__inner">
+            <div>
+                <h2 id="ask">{o.askTitle}</h2>
+                <p>{o.askText}</p>
+            </div>
+            <div class="actions">
+                <a class="btn btn--hay" href={`tel:${site.phone}`}>
+                    <Icon name="phone" />
+                    {site.phoneDisplay}
+                </a>
+                <a class="btn btn--light" href={`mailto:${site.email}`}>
+                    <Icon name="mail" />
+                    {site.email}
+                </a>
+            </div>
+        </div>
+    </section>
+</Layout>

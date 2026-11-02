@@ -1,0 +1,101 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Icon from '../components/Icon.astro';
+import MapEmbed from '../components/MapEmbed.astro';
+import { site, useTranslations, type Lang } from '../i18n/config';
+
+interface Props {
+    lang: Lang;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+const c = t.contact;
+
+const jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'ContactPage',
+    url: new URL(Astro.url.pathname, site.url).href,
+    mainEntity: {
+        '@type': 'LodgingBusiness',
+        name: 'Zalasek – Gospodarstwo Agroturystyczne z Alpakami',
+        telephone: [site.phone, site.phone2],
+        email: site.email,
+        address: { '@type': 'PostalAddress', streetAddress: 'Dobra 98', addressLocality: 'Dobra', postalCode: '34-642', addressCountry: 'PL' },
+    },
+};
+---
+
+<Layout lang={lang} page="contact">
+    <script type="application/ld+json" slot="head" set:html={JSON.stringify(jsonLd)} />
+    <div class="wrap page-head">
+        <h1>{c.title}</h1>
+        <p class="lead">{c.lead}</p>
+    </div>
+
+    <section class="section" style="padding-top: var(--space-m)">
+        <div class="wrap split contact-split">
+            <div>
+                <dl class="contact-list">
+                    <dt>{c.phone}</dt>
+                    <dd>
+                        <a href={`tel:${site.phone}`}>{site.phoneDisplay}</a><br />
+                        <a href={`tel:${site.phone2}`}>{site.phone2Display}</a>
+                    </dd>
+                    <dt>{c.email}</dt>
+                    <dd>
+                        <a href={`mailto:${site.email}`}>{site.email}</a><br />
+                        <a href={`mailto:${site.email2}`}>{site.email2}</a>
+                    </dd>
+                    <dt>{c.address}</dt>
+                    <dd>{site.address}</dd>
+                    <dt>{c.region}</dt>
+                    <dd>{c.regionValue}</dd>
+                    <dt>{c.gps}</dt>
+                    <dd>{site.lat}, {site.lng}</dd>
+                    <dt>{c.languagesLabel}</dt>
+                    <dd>{c.languagesValue}</dd>
+                </dl>
+                <div class="actions">
+                    <a class="btn btn--hay" href={`tel:${site.phone}`}>
+                        <Icon name="phone" />
+                        {t.common.callUs}
+                    </a>
+                    <a class="btn btn--line" href={site.mapsDirections} target="_blank" rel="noopener">
+                        <Icon name="navigation" />
+                        {t.common.directions}
+                    </a>
+                </div>
+            </div>
+            <MapEmbed t={t} />
+        </div>
+    </section>
+
+    <section class="section section--tint">
+        <div class="wrap split">
+            <div>
+                <h2>{c.travelTitle}</h2>
+                <ul class="ticks">
+                    {c.travel.map((p) => <li>{p}</li>)}
+                </ul>
+            </div>
+            <div>
+                <h2>{c.socialTitle}</h2>
+                <div class="social">
+                    <a class="btn btn--line" href={site.instagram} target="_blank" rel="noopener">
+                        <Icon name="instagram" />
+                        {site.instagramHandle}
+                    </a>
+                    <a class="btn btn--line" href={site.facebook} target="_blank" rel="noopener">
+                        <Icon name="facebook" />
+                        {t.common.facebook}
+                    </a>
+                    <a class="btn btn--line" href={site.booking[lang]} target="_blank" rel="noopener">
+                        <Icon name="calendar" />
+                        Booking.com
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+</Layout>

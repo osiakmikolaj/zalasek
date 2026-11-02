@@ -1,0 +1,124 @@
+---
+import { getImage } from 'astro:assets';
+import Layout from '../layouts/Layout.astro';
+import Icon from '../components/Icon.astro';
+import Photo from '../components/Photo.astro';
+import { galleryGroups, photo } from '../data/photos';
+import { site, useTranslations, type Lang } from '../i18n/config';
+
+interface Props {
+    lang: Lang;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+const g = t.gallery;
+
+const groups = await Promise.all(
+    (Object.keys(galleryGroups) as (keyof typeof galleryGroups)[]).map(async (key) => ({
+        key,
+        title: g.categories[key],
+        items: await Promise.all(
+            galleryGroups[key].map(async (slug) => {
+                const src = photo(slug);
+                const large = await getImage({ src, width: Math.min(src.width, 1800), format: 'webp', quality: 82 });
+                return { slug, large: large.src, alt: t.alt[slug] ?? '' };
+            }),
+        ),
+    })),
+);
+---
+
+<Layout lang={lang} page="gallery">
+    <div class="wrap page-head">
+        <h1>{g.title}</h1>
+        <p class="lead">{g.lead}</p>
+        <ul class="gallery-nav">
+            {
+                groups.map((group) => (
+                    <li>
+                        <a href={`#${group.key}`}>{group.title}</a>
+                    </li>
+                ))
+            }
+        </ul>
+    </div>
+
+    <div class="wrap" data-gallery>
+        {
+            groups.map((group) => (
+                <section class="gallery-group" id={group.key} aria-labelledby={`${group.key}-title`}>
+                    <h2 id={`${group.key}-title`}>{group.title}</h2>
+                    <ul class="gallery-grid">
+                        {group.items.map((item) => (
+                            <li>
+                                <a href={item.large} data-lightbox data-alt={item.alt}>
+                                    <Photo slug={item.slug} t={t} sizes="(max-width: 36rem) 100vw, (max-width: 62rem) 50vw, 25vw" widths={[360, 600, 900]} />
+                                </a>
+                            </li>
+                        ))}
+                    </ul>
+                </section>
+            ))
+        }
+    </div>
+
+    <section class="section">
+        <div class="wrap">
+            <p>{g.moreOnInstagram}</p>
+            <a class="btn btn--line" href={site.instagram} target="_blank" rel="noopener">
+                <Icon name="instagram" />
+                {site.instagramHandle}
+            </a>
+        </div>
+    </section>
+
+    <dialog class="lightbox" aria-label={g.title} data-lightbox-dialog>
+        <div class="lightbox__bar">
+            <button type="button" data-close aria-label={g.close}><Icon name="x" /></button>
+        </div>
+        <div class="lightbox__stage">
+            <button type="button" data-prev aria-label={g.prev}><Icon name="chevron-left" /></button>
+            <img alt="" />
+            <button type="button" data-next aria-label={g.next}><Icon name="chevron-right" /></button>
+        </div>
+        <p class="lightbox__caption" aria-live="polite"></p>
+    </dialog>
+</Layout>
+
+<script>
+    const dialog = document.querySelector<HTMLDialogElement>('[data-lightbox-dialog]');
+    const links = Array.from(document.querySelectorAll<HTMLAnchorElement>('[data-lightbox]'));
+    if (dialog && links.length) {
+        const img = dialog.querySelector('img')!;
+        const caption = dialog.querySelector('.lightbox__caption')!;
+        let index = 0;
+
+        const show = (i: number) => {
+            index = (i + links.length) % links.length;
+            const link = links[index];
+            img.src = link.href;
+            img.alt = link.dataset.alt ?? '';
+            caption.textContent = link.dataset.alt ?? '';
+        };
+
+        links.forEach((link, i) =>
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                show(i);
+                dialog.showModal();
+            }),
+        );
+        dialog.querySelector('[data-close]')?.addEventListener('click', () => dialog.close());
+        dialog.querySelector('[data-prev]')?.addEventListener('click', () => show(index - 1));
+        dialog.querySelector('[data-next]')?.addEventListener('click', () => show(index + 1));
+        dialog.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowLeft') show(index - 1);
+            if (e.key === 'ArrowRight') show(index + 1);
+        });
+        dialog.addEventListener('click', (e) => {
+            if (e.target === dialog) dialog.close();
+        });
+        dialog.addEventListener('close', () => links[index]?.focus());
+    }
+</script>

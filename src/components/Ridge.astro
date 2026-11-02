@@ -1,0 +1,14 @@
+---
+/** Sylwetka grzbietu gór (jak w logo) – przejście między zdjęciem a treścią.
+    position="bottom": kolor wypełnia dół (np. pod zdjęciem), "top": kolor wypełnia górę (nad stopką). */
+interface Props {
+    position?: 'bottom' | 'top';
+}
+const { position = 'bottom' } = Astro.props;
+const line = 'M0,60 C120,58 210,42 300,30 C360,22 405,9 455,8 C505,7 545,22 605,34 C690,50 770,58 865,52 C935,47 985,29 1045,21 C1095,15 1135,27 1172,38 L1186,38 L1193,17 L1200,38 L1207,38 L1214,24 L1221,38 C1290,52 1370,57 1440,54';
+const d = position === 'bottom' ? `${line} V90 H0 Z` : `${line} V0 H0 Z`;
+---
+
+<svg class={`ridge ridge--${position}`} viewBox="0 0 1440 90" preserveAspectRatio="none" aria-hidden="true" focusable="false">
+    <path fill="currentColor" d={d}></path>
+</svg>

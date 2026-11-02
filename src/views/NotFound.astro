@@ -1,0 +1,27 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Photo from '../components/Photo.astro';
+import { pagePath, useTranslations, type Lang } from '../i18n/config';
+
+interface Props {
+    lang: Lang;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+---
+
+<Layout lang={lang} page="notFound">
+    <section class="section">
+        <div class="wrap split">
+            <div>
+                <h1>{t.notFound.title}</h1>
+                <p class="lead">{t.notFound.text}</p>
+                <a class="btn btn--hay" href={pagePath(lang, 'home')}>{t.notFound.back}</a>
+            </div>
+            <div class="photo-single photo-single--narrow">
+                <Photo slug="alpaca-portrait" t={t} sizes="30rem" widths={[400, 700]} />
+            </div>
+        </div>
+    </section>
+</Layout>

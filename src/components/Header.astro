@@ -1,0 +1,79 @@
+---
+import { Image } from 'astro:assets';
+import logo from '../assets/brand/logo.png';
+import Icon from './Icon.astro';
+import { languages, pagePath, site, useTranslations, type Lang, type PageKey } from '../i18n/config';
+
+interface Props {
+    lang: Lang;
+    page: PageKey;
+}
+
+const { lang, page } = Astro.props;
+const t = useTranslations(lang);
+const links = [
+    { key: 'home', label: t.nav.home },
+    { key: 'offer', label: t.nav.offer },
+    { key: 'gallery', label: t.nav.gallery },
+    { key: 'contact', label: t.nav.contact },
+] as const;
+const langTarget = page === 'notFound' ? 'home' : page;
+---
+
+<header class="site-header">
+    <div class="wrap site-header__inner">
+        <a class="site-header__logo" href={pagePath(lang, 'home')} aria-label={t.nav.homeLink}>
+            <Image src={logo} alt="" widths={[240, 400]} sizes="7.25rem" loading="eager" />
+        </a>
+
+        <a class="btn btn--hay btn--small site-header__book" href={site.booking[lang]} target="_blank" rel="noopener">{t.nav.book}</a>
+
+        <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav" data-menu-toggle>
+            <Icon name="menu" />
+            {t.nav.menu}
+        </button>
+
+        <nav class="site-nav" id="site-nav" aria-label={t.nav.menu}>
+            <ul class="site-nav__links">
+                {
+                    links.map((l) => (
+                        <li>
+                            <a href={pagePath(lang, l.key)} aria-current={page === l.key ? 'page' : undefined}>
+                                {l.label}
+                            </a>
+                        </li>
+                    ))
+                }
+            </ul>
+            <ul class="lang-switch" aria-label={t.nav.language}>
+                {
+                    languages.map((l) => (
+                        <li>
+                            <a href={pagePath(l, langTarget)} hreflang={l} lang={l} aria-current={l === lang ? 'true' : undefined}>
+                                {l.toUpperCase()}
+                            </a>
+                        </li>
+                    ))
+                }
+            </ul>
+            <a class="btn btn--hay btn--small site-nav__book" href={site.booking[lang]} target="_blank" rel="noopener">{t.nav.book}</a>
+        </nav>
+    </div>
+</header>
+
+<script>
+    const toggle = document.querySelector<HTMLButtonElement>('[data-menu-toggle]');
+    const nav = document.getElementById('site-nav');
+    toggle?.addEventListener('click', () => {
+        const open = toggle.getAttribute('aria-expanded') !== 'true';
+        toggle.setAttribute('aria-expanded', String(open));
+        nav?.classList.toggle('is-open', open);
+    });
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && toggle?.getAttribute('aria-expanded') === 'true') {
+            toggle.setAttribute('aria-expanded', 'false');
+            nav?.classList.remove('is-open');
+            toggle.focus();
+        }
+    });
+</script>

@@ -1,0 +1,13 @@
+{
+    "name": "Zalasek – Gospodarstwo Agroturystyczne z Alpakami",
+    "short_name": "Zalasek",
+    "lang": "pl",
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#eef2ef",
+    "theme_color": "#1f3b2d",
+    "icons": [
+        { "src": "/icon-192.png", "type": "image/png", "sizes": "192x192" },
+        { "src": "/icon-512.png", "type": "image/png", "sizes": "512x512" }
+    ]
+}

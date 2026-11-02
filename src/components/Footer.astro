@@ -1,0 +1,62 @@
+---
+import { Image } from 'astro:assets';
+import logo from '../assets/brand/logo.png';
+import Icon from './Icon.astro';
+import Ridge from './Ridge.astro';
+import { pagePath, site, useTranslations, type Lang } from '../i18n/config';
+
+interface Props {
+    lang: Lang;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+const year = new Date().getFullYear();
+---
+
+<footer class="site-footer">
+    <Ridge position="top" />
+    <div class="wrap">
+        <div class="site-footer__grid">
+            <div>
+                <Image src={logo} alt="Zalasek" widths={[256, 400]} sizes="8rem" class="site-footer__logo" />
+                <p>{t.footer.tagline}</p>
+                <p>{t.common.languages}</p>
+            </div>
+            <div>
+                <h2>{t.footer.contact}</h2>
+                <ul>
+                    <li><a href={`tel:${site.phone}`}>{site.phoneDisplay}</a></li>
+                    <li><a href={`tel:${site.phone2}`}>{site.phone2Display}</a></li>
+                    <li><a href={`mailto:${site.email}`}>{site.email}</a></li>
+                    <li>{site.address}</li>
+                </ul>
+            </div>
+            <div>
+                <h2>{t.footer.pages}</h2>
+                <ul>
+                    <li><a href={pagePath(lang, 'offer')}>{t.nav.offer}</a></li>
+                    <li><a href={pagePath(lang, 'gallery')}>{t.nav.gallery}</a></li>
+                    <li><a href={pagePath(lang, 'contact')}>{t.nav.contact}</a></li>
+                    <li><a href={site.booking[lang]} target="_blank" rel="noopener">Booking.com</a></li>
+                </ul>
+            </div>
+            <div>
+                <h2>{t.footer.follow}</h2>
+                <ul>
+                    <li>
+                        <a href={site.instagram} target="_blank" rel="noopener" class="footer-social"><Icon name="instagram" /> {t.common.instagram}</a>
+                    </li>
+                    <li>
+                        <a href={site.facebook} target="_blank" rel="noopener" class="footer-social"><Icon name="facebook" /> {t.common.facebook}</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="site-footer__bottom">
+            <span>© {year} Zalasek</span>
+            <a href={pagePath(lang, 'privacy')}>{t.footer.privacy}</a>
+            <span>{t.footer.madeBy} <a href="https://www.osiak.dev" target="_blank" rel="noopener">Mikołaj Osiak</a></span>
+        </div>
+    </div>
+</footer>

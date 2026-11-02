@@ -1,0 +1,10 @@
+# Nagłówki HTTP dla Cloudflare Pages
+/*
+  X-Content-Type-Options: nosniff
+  X-Frame-Options: SAMEORIGIN
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: camera=(), microphone=(), geolocation=()
+
+# Pliki z hashem w nazwie (CSS, JS, zdjęcia) można trzymać w cache bardzo długo
+/_astro/*
+  Cache-Control: public, max-age=31536000, immutable

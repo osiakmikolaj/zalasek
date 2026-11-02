@@ -1,0 +1,32 @@
+---
+import Icon from './Icon.astro';
+import { site, type Dictionary } from '../i18n/config';
+
+interface Props {
+    t: Dictionary;
+}
+const { t } = Astro.props;
+---
+
+<div class="map" data-map>
+    <div class="map__placeholder">
+        <Icon name="map-pin" />
+        <p><strong>{site.address}</strong></p>
+        <button type="button" class="btn btn--line btn--small" data-map-load>{t.common.showMap}</button>
+        <a href={site.mapsPlace} target="_blank" rel="noopener">{t.common.openMaps}</a>
+        <p class="muted">{t.common.mapNote}</p>
+    </div>
+    <template>
+        <iframe title={t.common.mapTitle} src={site.mapsEmbed} loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+    </template>
+</div>
+
+<script>
+    document.querySelectorAll<HTMLElement>('[data-map]').forEach((map) => {
+        map.querySelector('[data-map-load]')?.addEventListener('click', () => {
+            const tpl = map.querySelector('template');
+            if (!tpl) return;
+            map.replaceChildren(tpl.content.cloneNode(true));
+        });
+    });
+</script>

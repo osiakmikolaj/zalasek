@@ -1,0 +1,32 @@
+---
+import { Picture } from 'astro:assets';
+import { photo } from '../data/photos';
+import type { Dictionary } from '../i18n/config';
+
+/** Zdjęcie z automatycznymi rozmiarami (AVIF + WebP) */
+interface Props {
+    slug: string;
+    t: Dictionary;
+    sizes: string;
+    widths?: number[];
+    class?: string;
+    priority?: boolean;
+}
+
+const { slug, t, sizes, widths = [400, 700, 1000, 1400], class: className, priority = false } = Astro.props;
+const src = photo(slug);
+const usable = widths.filter((w) => w <= src.width);
+if (usable.length === 0 || usable[usable.length - 1] < src.width) usable.push(Math.min(src.width, widths[widths.length - 1]));
+---
+
+<Picture
+    src={src}
+    alt={t.alt[slug] ?? ''}
+    formats={['avif', 'webp']}
+    fallbackFormat={src.format === 'webp' ? 'webp' : 'jpg'}
+    widths={[...new Set(usable)].sort((a, b) => a - b)}
+    sizes={sizes}
+    class={className}
+    loading={priority ? 'eager' : 'lazy'}
+    fetchpriority={priority ? 'high' : 'auto'}
+/>

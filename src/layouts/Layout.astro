@@ -1,0 +1,89 @@
+---
+import '@fontsource/young-serif/400.css';
+import '@fontsource-variable/figtree';
+import '../styles/global.css';
+
+import { getImage } from 'astro:assets';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import Icon from '../components/Icon.astro';
+import { languages, pagePath, site, useTranslations, type Lang, type PageKey } from '../i18n/config';
+import { photo } from '../data/photos';
+
+interface Props {
+    lang: Lang;
+    page: PageKey;
+    /** Ukrywa pasek akcji na telefonie (np. na stronie 404) */
+    noMobileBar?: boolean;
+}
+
+const { lang, page, noMobileBar = false } = Astro.props;
+const t = useTranslations(lang);
+const meta = t.meta[page];
+const canonical = page === 'notFound' ? undefined : new URL(pagePath(lang, page), site.url).href;
+
+const og = await getImage({ src: photo('aerial'), width: 1200, height: 630, fit: 'cover', format: 'jpg', quality: 80 });
+const ogImage = new URL(og.src, site.url).href;
+---
+
+<!doctype html>
+<html lang={t.htmlLang}>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>{meta.title}</title>
+        <meta name="description" content={meta.description} />
+        {canonical && <link rel="canonical" href={canonical} />}
+        {
+            page !== 'notFound' &&
+                languages.map((l) => <link rel="alternate" hreflang={l} href={new URL(pagePath(l, page), site.url).href} />)
+        }
+        {page !== 'notFound' && <link rel="alternate" hreflang="x-default" href={new URL(pagePath('pl', page), site.url).href} />}
+        {page === 'notFound' && <meta name="robots" content="noindex" />}
+
+        <meta property="og:type" content="website" />
+        <meta property="og:site_name" content="Zalasek" />
+        <meta property="og:locale" content={t.ogLocale} />
+        <meta property="og:title" content={meta.title} />
+        <meta property="og:description" content={meta.description} />
+        {canonical && <meta property="og:url" content={canonical} />}
+        <meta property="og:image" content={ogImage} />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta property="og:image:alt" content={t.alt.aerial} />
+        <meta name="twitter:card" content="summary_large_image" />
+
+        <meta name="theme-color" content="#1f3b2d" />
+        <link rel="icon" type="image/png" href="/favicon.png" />
+        <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+        <link rel="manifest" href="/manifest.webmanifest" />
+
+        <slot name="head" />
+
+        <script is:inline>
+            document.documentElement.classList.add('js');
+        </script>
+    </head>
+    <body>
+        <a class="skip-link" href="#main">{t.nav.skip}</a>
+        <Header lang={lang} page={page} />
+        <main id="main">
+            <slot />
+        </main>
+        <Footer lang={lang} />
+        {
+            !noMobileBar && (
+                <nav class="mobile-bar" aria-label={t.nav.book}>
+                    <a class="btn btn--line" href={`tel:${site.phone}`}>
+                        <Icon name="phone" />
+                        {t.nav.call}
+                    </a>
+                    <a class="btn btn--hay" href={site.booking[lang]} target="_blank" rel="noopener">
+                        <Icon name="calendar" />
+                        {t.nav.book}
+                    </a>
+                </nav>
+            )
+        }
+    </body>
+</html>

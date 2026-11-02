@@ -1,0 +1,32 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { useTranslations, type Lang } from '../i18n/config';
+
+interface Props {
+    lang: Lang;
+}
+
+const { lang } = Astro.props;
+const p = useTranslations(lang).privacy;
+---
+
+<Layout lang={lang} page="privacy">
+    <div class="wrap page-head">
+        <h1>{p.title}</h1>
+        <p class="muted">{p.updated}</p>
+    </div>
+    <section class="section" style="padding-top: 0">
+        <div class="wrap prose">
+            {
+                p.sections.map((s) => (
+                    <>
+                        <h2>{s.h}</h2>
+                        {s.p.map((text) => (
+                            <p>{text}</p>
+                        ))}
+                    </>
+                ))
+            }
+        </div>
+    </section>
+</Layout>

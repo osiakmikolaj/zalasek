@@ -1,0 +1,290 @@
+---
+import { Image } from 'astro:assets';
+import Layout from '../layouts/Layout.astro';
+import Icon from '../components/Icon.astro';
+import Photo from '../components/Photo.astro';
+import Ridge from '../components/Ridge.astro';
+import MapEmbed from '../components/MapEmbed.astro';
+import { pagePath, site, useTranslations, type Lang } from '../i18n/config';
+
+import aktywne from '../assets/partners/aktywne.webp';
+import blekit from '../assets/partners/blekit.webp';
+import liosmaki from '../assets/partners/liosmaki.webp';
+import plywalnia from '../assets/partners/plywalnia.webp';
+import ustasikow from '../assets/partners/ustasikow.webp';
+import zbik from '../assets/partners/zbik.webp';
+import drewnoikolor from '../assets/partners/drewnoikolor.png';
+
+interface Props {
+    lang: Lang;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+const h = t.home;
+
+const animals = [
+    { slug: 'alpaca-portrait', name: h.animals.alpacas, shape: 'is-tall' },
+    { slug: 'highland-cattle', name: h.animals.cattle, shape: 'is-wide' },
+    { slug: 'peacock', name: h.animals.peacock, shape: 'is-tall' },
+    { slug: 'pigs', name: h.animals.pigs, shape: 'is-wide' },
+    { slug: 'donkey', name: h.animals.donkey, shape: 'is-tall pos-top' },
+    { slug: 'rabbits', name: h.animals.rabbits, shape: 'is-wide' },
+    { slug: 'goat', name: h.animals.goat, shape: 'is-tall' },
+    { slug: 'kittens', name: h.animals.kittens, shape: 'is-wide' },
+];
+
+const instaPhotos = ['highland-snow', 'peacock-house', 'alpacas-frost', 'kittens', 'winter-village', 'sunset'];
+
+const partners = [
+    { href: 'https://trasymogielica.pl/', src: aktywne, name: 'Trasy Mogielica' },
+    { href: 'https://blekit.org/', src: blekit, name: 'Błękit' },
+    { href: 'https://liosmaki.pl/', src: liosmaki, name: 'Liosmaki' },
+    { href: 'https://plywalnia.limanowska.pl/', src: plywalnia, name: 'Pływalnia Limanowa' },
+    { href: 'https://www.facebook.com/ustasikow/', src: ustasikow, name: 'U Stasików Gospodarstwo Agroturystyczne' },
+    { href: 'https://www.facebook.com/oszbik/', src: zbik, name: 'Żbik Ośrodek Szkolenia' },
+    { href: 'https://www.facebook.com/drewnoikolor/', src: drewnoikolor, name: 'Drewno i Kolor' },
+];
+
+const jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'LodgingBusiness',
+    name: 'Zalasek – Gospodarstwo Agroturystyczne z Alpakami',
+    description: t.meta.home.description,
+    url: new URL(pagePath(lang, 'home'), site.url).href,
+    telephone: site.phone,
+    email: site.email,
+    address: {
+        '@type': 'PostalAddress',
+        streetAddress: 'Dobra 98',
+        addressLocality: 'Dobra',
+        postalCode: '34-642',
+        addressRegion: 'małopolskie',
+        addressCountry: 'PL',
+    },
+    geo: { '@type': 'GeoCoordinates', latitude: site.lat, longitude: site.lng },
+    hasMap: site.mapsPlace,
+    petsAllowed: true,
+    smokingAllowed: false,
+    knowsLanguage: ['pl', 'en', 'de'],
+    numberOfRooms: 2,
+    amenityFeature: ['Pool', 'Free Wi-Fi', 'Free parking', 'Kitchen', 'Terrace', 'Garden', 'Barbecue', 'Playground'].map((name) => ({
+        '@type': 'LocationFeatureSpecification',
+        name,
+        value: true,
+    })),
+    sameAs: [site.facebook, site.instagram, site.booking.pl],
+};
+---
+
+<Layout lang={lang} page="home">
+    <script type="application/ld+json" slot="head" set:html={JSON.stringify(jsonLd)} />
+
+    <section class="hero">
+        <Photo slug="aerial" t={t} sizes="100vw" widths={[640, 960, 1280, 1600, 2000]} class="hero__media" priority />
+        <div class="wrap hero__content">
+            <h1>{h.heroTitle}</h1>
+            <p class="hero__lead">{h.heroLead}</p>
+            <div class="actions">
+                <a class="btn btn--hay" href={site.booking[lang]} target="_blank" rel="noopener">
+                    <Icon name="calendar" />
+                    {t.common.checkDates}
+                </a>
+                <a class="btn btn--light" href={`tel:${site.phone}`}>
+                    <Icon name="phone" />
+                    {site.phoneDisplay}
+                </a>
+            </div>
+            <a class="rating" href={`${site.booking[lang]}#tab-reviews`} target="_blank" rel="noopener">
+                <span class="rating__score">{t.common.rating}</span>
+                <span class="rating__text">
+                    <strong>{t.common.ratingWord}</strong>
+                    {t.common.ratingSource}<br />
+                    <span>{t.common.readReviews}</span>
+                </span>
+            </a>
+        </div>
+        <Ridge />
+    </section>
+
+    <div class="wrap">
+        <ul class="facts">
+            {
+                h.facts.map((f) => (
+                    <li>
+                        <Icon name={f.icon} />
+                        <strong>{f.title}</strong>
+                        <span>{f.text}</span>
+                    </li>
+                ))
+            }
+        </ul>
+    </div>
+
+    <section class="section" aria-labelledby="animals-title">
+        <div class="wrap">
+            <div class="section__head">
+                <h2 id="animals-title">{h.animalsTitle}</h2>
+                <p class="lead">{h.animalsLead}</p>
+            </div>
+            <ul class="animals">
+                {
+                    animals.map((a) => (
+                        <li class={a.shape}>
+                            <figure>
+                                <Photo
+                                    slug={a.slug}
+                                    t={t}
+                                    sizes={a.shape.includes('is-wide') ? '(max-width: 48rem) 100vw, 50vw' : '(max-width: 48rem) 50vw, 25vw'}
+                                    widths={[360, 600, 900, 1200]}
+                                />
+                                <figcaption>{a.name}</figcaption>
+                            </figure>
+                        </li>
+                    ))
+                }
+            </ul>
+        </div>
+    </section>
+
+    <section class="section section--tint" aria-labelledby="apartment-title">
+        <div class="wrap split">
+            <div>
+                <h2 id="apartment-title">{h.apartmentTitle}</h2>
+                <p>{h.apartmentText}</p>
+                <ul class="ticks">
+                    {h.apartmentPoints.map((p) => <li>{p}</li>)}
+                </ul>
+                <a class="btn btn--line" href={pagePath(lang, 'offer')}>{t.common.seeOffer}</a>
+            </div>
+            <div class="photo-trio">
+                <Photo slug="dining-piano" t={t} sizes="(max-width: 52rem) 60vw, 32vw" widths={[400, 700]} />
+                <Photo slug="kitchen-dining" t={t} sizes="(max-width: 52rem) 40vw, 22vw" widths={[300, 500, 800]} />
+                <Photo slug="kitchen-wide" t={t} sizes="(max-width: 52rem) 40vw, 22vw" widths={[300, 500, 800]} />
+            </div>
+        </div>
+    </section>
+
+    <section class="section section--dark" aria-labelledby="year-title">
+        <div class="wrap">
+            <div class="section__head">
+                <h2 id="year-title">{h.yearTitle}</h2>
+                <p>{h.yearLead}</p>
+            </div>
+            <ol class="year">
+                {
+                    h.year.map((y) => (
+                        <li>
+                            <span class="year__dot">
+                                <Icon name={y.icon} />
+                            </span>
+                            <span class="year__when">{y.when}</span>
+                            <h3>{y.title}</h3>
+                            <p>{y.text}</p>
+                        </li>
+                    ))
+                }
+            </ol>
+        </div>
+    </section>
+
+    <section class="section" aria-labelledby="farm-title">
+        <div class="wrap split split--reverse">
+            <div>
+                <h2 id="farm-title">{h.farmTitle}</h2>
+                <p>{h.farmText}</p>
+            </div>
+            <div class="photo-single">
+                <Photo slug="peacock-house" t={t} sizes="(max-width: 52rem) 100vw, 55vw" widths={[500, 800, 1200, 1600]} />
+            </div>
+        </div>
+    </section>
+
+    <section class="section section--tint" aria-labelledby="insta-title">
+        <div class="wrap">
+            <div class="section__head">
+                <h2 id="insta-title">{h.instaTitle}</h2>
+                <p>{h.instaText}</p>
+            </div>
+            <ul class="insta">
+                {
+                    instaPhotos.map((slug) => (
+                        <li>
+                            <a href={site.instagram} target="_blank" rel="noopener">
+                                <Photo slug={slug} t={t} sizes="(max-width: 48rem) 33vw, 16vw" widths={[240, 400]} />
+                            </a>
+                        </li>
+                    ))
+                }
+            </ul>
+            <div class="social">
+                <a class="btn btn--line" href={site.instagram} target="_blank" rel="noopener">
+                    <Icon name="instagram" />
+                    {site.instagramHandle}
+                </a>
+                <a class="btn btn--line" href={site.facebook} target="_blank" rel="noopener">
+                    <Icon name="facebook" />
+                    {t.common.facebook}
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" aria-labelledby="area-title">
+        <div class="wrap split">
+            <div>
+                <h2 id="area-title">{h.areaTitle}</h2>
+                <p>{h.areaText}</p>
+                <p>{site.address}</p>
+                <div class="actions">
+                    <a class="btn btn--line" href={site.mapsDirections} target="_blank" rel="noopener">
+                        <Icon name="navigation" />
+                        {t.common.directions}
+                    </a>
+                    <a href={pagePath(lang, 'contact')}>{t.nav.contact}</a>
+                </div>
+            </div>
+            <MapEmbed t={t} />
+        </div>
+    </section>
+
+    <section class="section section--dark final" aria-labelledby="final-title">
+        <div class="wrap final__inner">
+            <div>
+                <h2 id="final-title">{h.finalTitle}</h2>
+                <p>{h.finalText}</p>
+            </div>
+            <div class="actions">
+                <a class="btn btn--hay" href={site.booking[lang]} target="_blank" rel="noopener">
+                    <Icon name="calendar" />
+                    {t.common.checkDates}
+                </a>
+                <a class="btn btn--light" href={`tel:${site.phone}`}>
+                    <Icon name="phone" />
+                    {site.phoneDisplay}
+                </a>
+                <a class="btn btn--light" href={`mailto:${site.email}`}>
+                    <Icon name="mail" />
+                    {t.common.writeUs}
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section class="section partners-section" aria-labelledby="partners-title">
+        <div class="wrap">
+            <h2 id="partners-title" class="partners-title">{h.partnersTitle}</h2>
+            <ul class="partners">
+                {
+                    partners.map((p) => (
+                        <li>
+                            <a href={p.href} target="_blank" rel="noopener">
+                                <Image src={p.src} alt={p.name} widths={[136, 272]} sizes="8.5rem" />
+                            </a>
+                        </li>
+                    ))
+                }
+            </ul>
+        </div>
+    </section>
+</Layout>
